@@ -1,5 +1,7 @@
-const createError = require('http-errors')
-const User = require('../models/User.model')
+const createError = require('http-errors');
+const User = require('../models/User.model');
+const Comment = require("../models/Comment.model");
+
 
 module.exports.getUserById = (req, res, next) => {
   User.findById(req.params.id)

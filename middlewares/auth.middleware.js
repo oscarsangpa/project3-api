@@ -30,7 +30,7 @@ module.exports.isAuthenticated = (req, res, next) => {
         process.env.JWT_SECRET || 'changeme',
         (err, decodedToken  ) => {
           if (err) {
-            console.log(err);
+            console.log(err, "expirado");
             next(err)
           } else {
             req.currentUser = decodedToken.id
