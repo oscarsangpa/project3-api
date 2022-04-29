@@ -47,7 +47,7 @@ module.exports.create = (req, res, next) => {
                     // jwt secret
                     process.env.JWT_SECRET || 'changeme',
                     {
-                      expiresIn: '5s'
+                      expiresIn: '1h'
                     }
                   )
                 })
