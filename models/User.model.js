@@ -17,7 +17,8 @@ const userSchema = new mongoose.Schema(
     },
     name: {
       type: String,
-      required: [true, 'Name is required']
+      required: [true, 'Name is required'],
+      minlength: [3, 'Name must include at least 3 characters']
     },
     password: {
       type: String,
@@ -25,7 +26,8 @@ const userSchema = new mongoose.Schema(
       minlength: [8, 'Password must have at least 8 characters']
     },
     image: {
-      type: String
+      type: String,
+      //  default: img cloudinary
     }
   },
   {
@@ -41,8 +43,8 @@ const userSchema = new mongoose.Schema(
   }
 )
 
-userSchema.virtual('comments', {
-  ref: 'Comments',
+userSchema.virtual('reviews', {
+  ref: 'Review',
   localField: '_id',
   foreignField: 'user',
   justOne: false,

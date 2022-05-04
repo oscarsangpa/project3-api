@@ -5,6 +5,7 @@ const upload = require('./storage.config');
 const authMiddleware = require('../middlewares/auth.middleware')
 const usersController = require('../controllers/users.controller');
 const authController = require('../controllers/auth.controller');
+const reviewsController = require('../controllers/reviews.controller')
 
 
 router.get('/', (req, res, next) => {
@@ -22,6 +23,11 @@ router.get('/users/me', authMiddleware.isAuthenticated, usersController.getCurre
 router.get('/users/:id', usersController.getUserById);
 
 
+/* Reviews */
 
+router.post('/review/new', reviewsController.create)
+router.get('/review/:id', reviewsController.detail)
+router.patch('/review/:id', reviewsController.update)
+router.delete('/review/:id', reviewsController.delete)
 
 module.exports = router;
