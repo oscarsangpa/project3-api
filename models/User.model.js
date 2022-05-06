@@ -27,6 +27,7 @@ const userSchema = new mongoose.Schema(
     },
     image: {
       type: String,
+      default: "https://res.cloudinary.com/dyevght88/image/upload/v1651762352/project3/KnownFor_3_b1tnqz.png",
       //  default: img cloudinary
     }
   },
