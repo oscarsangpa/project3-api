@@ -25,6 +25,7 @@ router.get('/users/:id', usersController.getUserById);
 
 /* Reviews */
 
+router.get('/reviews', reviewsController.list)
 router.post('/review/new', reviewsController.create)
 router.get('/review/:id', reviewsController.detail)
 router.patch('/review/:id', reviewsController.update)

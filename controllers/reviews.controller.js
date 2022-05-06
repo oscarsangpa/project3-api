@@ -1,7 +1,7 @@
 const Review = require('../models/Review.model')
 
 module.exports.create = (req, res, next) => {
-  // console.log(req.body)
+  console.log(req.body)
   const review = { user, description, itemId } = req.body
   Review.create(review)
     .then((review, itemId) => res.status(200).json({review, itemId}))
@@ -14,6 +14,13 @@ module.exports.detail = (req, res, next) => {
     .catch(next)
 }
 
+module.exports.list = (req, res, next) => {
+  Review.find(req.query)
+    .then(reviews =>  res.status(200).json(reviews))
+    .catch(next)
+}
+
+
 module.exports.update = (req, res, next) => {
   Review.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then(review => {
@@ -24,9 +31,9 @@ module.exports.update = (req, res, next) => {
 }
 
 module.exports.delete = (req, res, next) => {
-  const review = {description, itemId} = req.params.id
+  const review = {description, itemId, user} = req.params.id
   console.log("esta llegando", review, user)
   Review.findByIdAndDelete(review)
-    .then(review => res.status(202).json({review, itemId}))
+    .then(review => res.status(202).json({review, itemId, user}))
     .catch(next)
 }
